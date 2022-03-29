@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Entity
 @Cacheable
 public class Fruit extends PanacheEntity {
-    @Column(length = 40, unique = true)
+    @Column(length = 40)
     public String name;
 
     public Fruit() {
