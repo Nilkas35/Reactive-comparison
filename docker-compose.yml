@@ -1,0 +1,21 @@
+version: '2'
+services:
+  gs-spring-boot-reactive-docker:
+    image: springio/gs-spring-boot-reactive-docker
+    ports:
+      - '8080:8080'
+      - '5000:5000'
+    environment:
+      SERVER_PORT: '8080'
+      SPRING.DATASOURCE.URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING.DATASOURCE.USERNAME: "postgres"
+  postgres:
+    image: postgres
+    user: postgres
+    ports:
+      - '5433:5432'
+    volumes: 
+          - ./create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    environment:
+        POSTGRES_HOST_AUTH_METHOD: "trust"
+        POSTGRES_DB: "postgres"
