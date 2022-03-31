@@ -1,0 +1,21 @@
+version: '2'
+services:
+  gs-spring-boot-docker:
+    image: springio/gs-spring-boot-docker
+    ports:
+      - '8081:8081'
+    environment:
+      SERVER_PORT: '8081'
+      SPRING.DATASOURCE.URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING.DATASOURCE.USERNAME: "postgres"
+    scale: 1
+  postgres:
+    image: postgres
+    user: postgres
+    volumes:
+        - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    ports:
+      - '5432:5432'
+    environment:
+        POSTGRES_HOST_AUTH_METHOD: "trust"
+        POSTGRES_DB: "postgres"
