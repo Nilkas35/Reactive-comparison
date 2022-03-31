@@ -10,4 +10,5 @@ import reactor.core.publisher.Mono;
 
 @Repository
 public interface MemberRepository extends ReactiveSortingRepository<Member, Long> {
+    Mono<Member> findMemberById(String id);
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
@@ -46,6 +47,13 @@ public class MemberRouter {
                     ok().body(
                             memberRepository.findAll(), Member.class)
         );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> one() {
+        return route(GET("/member/{id}"),
+                req -> ok().body(
+                        memberRepository.findMemberById(req.pathVariable("id")), Member.class));
     }
     @Bean
     RouterFunction<ServerResponse> updateMemberRoute() {
