@@ -1,9 +1,7 @@
-version: '3.3'
+version: '3.9'
 services:
   postgres:
-    image: 'postgres:14.1'
-    volumes:
-      - './postgres-data:/var/lib/postgresql/data'
+    image: 'postgres'
     ports:
       - '5432:5432'
     networks:
@@ -13,13 +11,15 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: fruits
   quarkus:
-    image: 'sha256:fd89c483400f7266b1a90f971a915056d1c83662d4048aabb76eb96e73217ef4' #Change to your local quarkus instance
+    image: 'nilkas/quarkus-mutiny:latest'
+    environment:
+      quarkus.datasource.reactive.url: 'postgresql://postgres:5432/fruits'
+      quarkus.datasource.username: 'postgres'
+      quarkus.datasource.password: 'postgres'
     ports:
       - '8080:8080'
     networks:
       - app_net
-    environment:
-      quarkus.datasource.reactive.url: 'postgresql://postgres:5432/fruits'
 networks:
   app_net:
     driver: bridge

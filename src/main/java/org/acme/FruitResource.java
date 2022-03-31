@@ -3,6 +3,7 @@ package org.acme;
 import io.quarkus.hibernate.reactive.panache.Panache;
 import io.quarkus.panache.common.Sort;
 import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.tuples.Tuple2;
 import org.jboss.resteasy.reactive.RestPath;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -27,6 +28,19 @@ public class FruitResource {
     public Uni<Fruit> getSingle(@RestPath Long id) {
         return Fruit.findById(id);
     }
+
+    @GET
+    @Path("/both")
+    public Uni<Response> getBoth() {
+        Uni<List<Fruit>> fruits = Fruit.listAll(Sort.by("name"));
+        Uni<List<Candy>> candies = Candy.listAll(Sort.by("name"));
+        Uni<Tuple2<List<Fruit>, List<Candy>>> responses = Uni.combine()
+                .all().unis(fruits, candies).asTuple();
+        return responses.onItem().ifNotNull().transform(tuple -> Response.ok(tuple).build());
+
+
+    }
+
 
     @POST
     public Uni<Response> create(Fruit fruit) {
