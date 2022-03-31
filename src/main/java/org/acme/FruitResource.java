@@ -36,9 +36,9 @@ public class FruitResource {
         Uni<List<Candy>> candies = Candy.listAll(Sort.by("name"));
         Uni<Tuple2<List<Fruit>, List<Candy>>> responses = Uni.combine()
                 .all().unis(fruits, candies).asTuple();
-        return responses.onItem().ifNotNull().transform(tuple -> Response.ok(tuple).build());
 
-
+        return Panache.withTransaction(() -> responses)
+                .onItem().ifNotNull().transform(tuple -> Response.ok(tuple).build());
     }
 
 
