@@ -29,6 +29,14 @@ public class CartRouter {
                             cartRepository.findAll(), Cart.class)
         );
     }
+
+    @Bean
+    public RouterFunction<ServerResponse> oneCart() {
+        return route(GET("/cart/{id}"),
+                req -> ok().body(
+                        cartRepository.findCartById(req.pathVariable("id")), Cart.class));
+    }
+
     @Bean
     RouterFunction<ServerResponse> updateCartRoute() {
         return route(POST("/cart"),
