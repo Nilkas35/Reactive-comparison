@@ -50,6 +50,15 @@ public class MemberRouter {
     }
 
     @Bean
+    public RouterFunction<ServerResponse> getBigData() {
+        return route(GET("/member/big"),
+                req ->
+                        ok().body(
+                                memberRepository.getBigData(), String.class)
+        );
+    }
+
+    @Bean
     public RouterFunction<ServerResponse> one() {
         return route(GET("/member/{id}"),
                 req -> ok().body(

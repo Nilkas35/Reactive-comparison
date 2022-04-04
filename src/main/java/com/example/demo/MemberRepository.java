@@ -11,4 +11,7 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface MemberRepository extends ReactiveSortingRepository<Member, Long> {
     Mono<Member> findMemberById(String id);
+
+    @Query(value = "select repeat('employee',2000000)")
+    Mono<String> getBigData();
 }
