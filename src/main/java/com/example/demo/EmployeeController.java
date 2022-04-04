@@ -28,6 +28,13 @@ class EmployeeController {
         return repository.findAll();
     }
 
+    @GetMapping("/employee/big")
+    List<Object> largeData() {
+        List<Object> combined = new ArrayList<>();
+        combined.add(repository.getLargeData());
+        return combined;
+    }
+
     @GetMapping("/employee/both")
     List<Object> getBoth() {
         List<Employee> employees = repository.findAll();
