@@ -30,11 +30,11 @@ public class MemberRouter {
 
     @Bean
     public RouterFunction<ServerResponse> getMultipleMembersRoute() {
-        return route(GET("/member/both"),
+        return route(GET("/member/{idOne}/{idTwo}"),
                 req -> {
-                    Flux<Cart> test = cartRepository.findAll();
-                    Flux<Member> test2 = memberRepository.findAll();
-                    Flux<Member> res = Flux.zip(test,test2).flatMap(dFlux -> Flux.just(new Member(dFlux.getT1().getId(),dFlux.getT2().getName())));
+                    Mono<Cart> test = cartRepository.findCartById(req.pathVariable("idOne"));
+                    Mono<Member> test2 = memberRepository.findMemberById(req.pathVariable("idTwo"));
+                    Flux<Object> res = Flux.concat(test, test2);
                     return ok().body(res, Member.class);
                 }
         );
