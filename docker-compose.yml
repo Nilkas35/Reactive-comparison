@@ -4,6 +4,7 @@ services:
     image: springio/gs-spring-boot-docker
     ports:
       - '8081:8081'
+      - '5000:5000'
     environment:
       SERVER_PORT: '8081'
       SPRING.DATASOURCE.URL: jdbc:postgresql://postgres:5432/postgres
