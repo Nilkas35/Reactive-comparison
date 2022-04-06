@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,10 +36,10 @@ class EmployeeController {
         return combined;
     }
 
-    @GetMapping("/employee/both")
-    List<Object> getBoth() {
-        List<Employee> employees = repository.findAll();
-        List<Cart> carts = cartRepository.findAll();
+    @GetMapping("/employee/{idOne}/{idTwo}")
+    List<Object> getBoth(@PathVariable Long idOne,@PathVariable Long idTwo) {
+        Optional<Employee> employees = repository.findById(idOne);
+        Optional<Cart> carts = cartRepository.findById(idTwo);
         List<Object> combined = new ArrayList<>();
         combined.add(employees);
         combined.add(carts);
