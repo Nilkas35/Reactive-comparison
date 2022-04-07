@@ -30,14 +30,13 @@ public class FruitResource {
     }
 
     @GET
-    @Path("/both")
-    public Uni<Response> getBoth() {
-        Uni<List<Fruit>> fruits = Fruit.listAll(Sort.by("name"));
-        Uni<List<Candy>> candies = Candy.listAll(Sort.by("name"));
-        Uni<Tuple2<List<Fruit>, List<Candy>>> responses = Uni.combine()
-                .all().unis(fruits, candies).asTuple();
+    @Path("/{idone}/{idtwo}")
+    public Uni<Response> getBoth(@RestPath Long idone, @RestPath Long idtwo) {
+        Uni<Fruit> fruits = Fruit.findById(idone);
+        Uni<Candy> candies = Candy.findById(idtwo);
+        Uni<Tuple2<Fruit, Candy>> response = Uni.combine().all().unis(fruits, candies).asTuple();
 
-        return Panache.withTransaction(() -> responses)
+        return Panache.withTransaction(() -> response)
                 .onItem().ifNotNull().transform(tuple -> Response.ok(tuple).build());
     }
 

@@ -92,3 +92,10 @@ ENV AB_JOLOKIA_OFF=""
 ENV JAVA_OPTS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
 ENV JAVA_APP_JAR="/deployments/quarkus-run.jar"
 
+EXPOSE 5000
+ENV JAVA_TOOL_OPTIONS "-Dcom.sun.management.jmxremote.ssl=false \
+ -Dcom.sun.management.jmxremote.authenticate=false \
+ -Dcom.sun.management.jmxremote.port=5000 \
+ -Dcom.sun.management.jmxremote.rmi.port=5000 \
+ -Dcom.sun.management.jmxremote.host=0.0.0.0 \
+ -Djava.rmi.server.hostname=0.0.0.0"

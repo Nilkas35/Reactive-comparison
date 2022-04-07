@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-@Cacheable
+//@Cacheable
 public class Candy extends PanacheEntity {
     @Column(length = 40)
     public String name;
