@@ -52,6 +52,7 @@ public class DrinkResource {
 
     @GET
     @Path("/{idone}/{idtwo}")
+    @Transactional
     public Response getTwoItem(@PathParam("idone") Long idone, @PathParam("idtwo") Long idtwo) {
         Drink drink = Drink.findById(idone);
         Cookie cookie = Cookie.findById(idtwo);
@@ -61,4 +62,17 @@ public class DrinkResource {
 
         return Response.ok(Tuple2.of(drink, cookie)).build();
     }
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    @GET
+    @Path("/random/{max}")
+    @Transactional
+    public Drink getRandom(@PathParam("max") int max) {
+        Long id = new Long(getRandomNumber(1, max));
+        return Drink.findById(id);
+    }
+
 }

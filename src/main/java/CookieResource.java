@@ -48,4 +48,16 @@ public class CookieResource {
         }
         existing.delete();
     }
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    @GET
+    @Path("/random/{max}")
+    @Transactional
+    public Cookie getRandom(@PathParam("max") int max) {
+        Long id = new Long(getRandomNumber(1, max));
+        return Cookie.findById(id);
+    }
 }
