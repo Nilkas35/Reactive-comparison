@@ -29,6 +29,18 @@ public class CandyResource {
         return Candy.findById(id);
     }
 
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    @GET
+    @Path("/random/{max}")
+    public Uni<Candy> getRandom(@RestPath Integer max) {
+        Long id = new Long(getRandomNumber(1, max));
+        return Candy.findById(id);
+
+    }
+
 
     @POST
     public Uni<Response> create(Candy candy) {

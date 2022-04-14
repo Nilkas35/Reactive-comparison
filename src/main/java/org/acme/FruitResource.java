@@ -46,6 +46,18 @@ public class FruitResource {
                 .onItem().ifNotNull().transform(tuple -> Response.ok(tuple).build());
     }
 
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    @GET
+    @Path("/random/{max}")
+    public Uni<Fruit> getRandom(@RestPath Integer max) {
+        Long id = new Long(getRandomNumber(1, max));
+        return Fruit.findById(id);
+
+    }
+
 
     @POST
     public Uni<Fruit> create(Fruit fruit) {
