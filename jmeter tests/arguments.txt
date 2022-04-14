@@ -1,0 +1,5 @@
+4Frameworks
+./jmeter.sh -n -t tests/4Frameworks.jmx -JfPath=/drinks/ -JsPath=/cookies/ -JthirdP=/employee/ -JfourthP=/cart/ -JfifthP=/fruits/ -JsixthP=/candy/ -JseventhP=/cart/ -JeightP=/member/ -JfId=1 -JsId=2 -JfPort=8081 -JsPort=8083 -JthirdPort=8082 -JfourthPort=8080 -Jusers=100 -JsType=Quarkus -JfType=Spring -JthirdType=ReactiveQuarkus -JfourthType=ReactiveSpring -Jtime=300 -f -l test.csv
+
+2Frameworks
+./jmeter.sh -n -t tests/2Frameworks.jmx -JfPath=/drinks/ -JsPath=/cookies/ -JthirdP=/employee/ -JfourthP=/cart/ -JfId=1 -JsId=2 -JfPort=8081 -JsPort=8083 -Jusers=250 -JsType=SpringBoot -JfType=Quarkus -Jtime=300 -f -l test.csv
