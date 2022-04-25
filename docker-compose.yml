@@ -1,7 +1,7 @@
 version: '2'
 services:
-  gs-spring-boot-docker:
-    image: springio/gs-spring-boot-docker
+  imperative-spring-boot:
+    image: vitryssen/imperative-spring-boot
     ports:
       - '8081:8081'
       - '5000:5000'
