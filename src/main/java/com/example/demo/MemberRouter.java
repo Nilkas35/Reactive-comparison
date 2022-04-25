@@ -13,6 +13,7 @@ import reactor.core.scheduler.Schedulers;
 import reactor.core.publisher.Flux;
 
 import java.net.URI;
+import java.util.Random;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
@@ -35,6 +36,20 @@ public class MemberRouter {
                     Mono<Cart> test = cartRepository.findCartById(req.pathVariable("idOne"));
                     Mono<Member> test2 = memberRepository.findMemberById(req.pathVariable("idTwo"));
                     Flux<Object> res = Flux.concat(test, test2);
+                    return ok().body(res, Member.class);
+                }
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> getRandom() {
+        return route(GET("/member/random/{min}/{max}"),
+                req -> {
+                    Random r = new Random();
+                    int low = Integer.parseInt(req.pathVariable("min"));;
+                    int high = Integer.parseInt(req.pathVariable("max"));
+                    int result = r.nextInt(high-low) + low;
+                    Mono<Member> res = memberRepository.findMemberById(String.valueOf(result));
                     return ok().body(res, Member.class);
                 }
         );

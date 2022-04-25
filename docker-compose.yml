@@ -1,13 +1,13 @@
 version: '2'
 services:
-  gs-spring-boot-reactive-docker:
-    image: springio/gs-spring-boot-reactive-docker
+  reactive-spring-boot:
+    image: 'vitryssen/reactive-spring-boot:latest'
     ports:
       - '8080:8080'
-      - '5000:5000'
+      - '5001:5000'
     environment:
       SERVER_PORT: '8080'
-      SPRING.DATASOURCE.URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING.DATASOURCE.URL: r2dbc:postgresql://postgres:5432/postgres
       SPRING.DATASOURCE.USERNAME: "postgres"
   postgres:
     image: postgres
