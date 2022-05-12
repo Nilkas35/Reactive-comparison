@@ -1,0 +1,50 @@
+{
+  "Get Fruit 2" : {
+    "transaction" : "Get Fruit 2",
+    "sampleCount" : 10995867,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 6.2182771035700855,
+    "medianResTime" : 5.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 157.0,
+    "pct1ResTime" : 12.0,
+    "pct2ResTime" : 15.0,
+    "pct3ResTime" : 22.0,
+    "throughput" : 36654.96711480317,
+    "receivedKBytesPerSec" : 3293.2197017205976,
+    "sentKBytesPerSec" : 4438.6874240581965
+  },
+  "Get Fruit 1" : {
+    "transaction" : "Get Fruit 1",
+    "sampleCount" : 11002658,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 6.213174671065078,
+    "medianResTime" : 6.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 170.0,
+    "pct1ResTime" : 12.0,
+    "pct2ResTime" : 15.0,
+    "pct3ResTime" : 22.9900000000016,
+    "throughput" : 36680.90653295817,
+    "receivedKBytesPerSec" : 3295.55019632046,
+    "sentKBytesPerSec" : 4441.828525475403
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 21998525,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 6.215725099751436,
+    "medianResTime" : 5.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 170.0,
+    "pct1ResTime" : 12.0,
+    "pct2ResTime" : 14.0,
+    "pct3ResTime" : 21.0,
+    "throughput" : 73332.57217909014,
+    "receivedKBytesPerSec" : 6588.473281715131,
+    "sentKBytesPerSec" : 8880.116162311697
+  }
+}

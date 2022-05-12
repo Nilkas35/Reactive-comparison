@@ -1,0 +1,50 @@
+{
+  "Get Drink 1" : {
+    "transaction" : "Get Drink 1",
+    "sampleCount" : 4150340,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 17.976624083807916,
+    "medianResTime" : 10.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 533.0,
+    "pct1ResTime" : 47.0,
+    "pct2ResTime" : 62.0,
+    "pct3ResTime" : 119.0,
+    "throughput" : 13833.95942148788,
+    "receivedKBytesPerSec" : 1242.8947917743014,
+    "sentKBytesPerSec" : 1675.2060236957977
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 8296971,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 17.98446143779365,
+    "medianResTime" : 10.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 568.0,
+    "pct1ResTime" : 46.0,
+    "pct2ResTime" : 63.0,
+    "pct3ResTime" : 125.0,
+    "throughput" : 27655.095061596716,
+    "receivedKBytesPerSec" : 2484.6374469403295,
+    "sentKBytesPerSec" : 3348.859167615227
+  },
+  "Get Drink 2" : {
+    "transaction" : "Get Drink 2",
+    "sampleCount" : 4146631,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 17.992305801987104,
+    "medianResTime" : 10.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 568.0,
+    "pct1ResTime" : 45.0,
+    "pct2ResTime" : 59.0,
+    "pct3ResTime" : 119.0,
+    "throughput" : 13821.366193802998,
+    "receivedKBytesPerSec" : 1241.763368974488,
+    "sentKBytesPerSec" : 1673.6810625308315
+  }
+}
